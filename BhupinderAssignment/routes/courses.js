@@ -26,7 +26,7 @@ rout.route("/").get((req, res) => {
     .post((req, res) => {
 
         //"/tasks" Save  new  storys
-        db.create({batchName:req.body.batchName,courseid:req.params.courseid}).then(result => res.json(result))
+        db.create(req.body).then(result => res.json(result))
             .catch(error => {
                 res.status(412).json({ msg: error.message });
             })
