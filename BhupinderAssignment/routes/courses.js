@@ -49,7 +49,13 @@ rout.route("/:courseid/batches").get((req,res)=>{
 
             res.status(412).json({ msg: error.message })
         })
-})
+}).post((req, res) => {
+
+        batch.create({batchName:req.body.batchName,courseCourseid:req.params.courseid}).then(result => res.json(result))
+            .catch(error => {
+                res.status(412).json({ msg: error.message });
+            })
+    })
 
 
 rout.route("/:courseid/batches/:batchid/lectures").get((req,res)=>{
